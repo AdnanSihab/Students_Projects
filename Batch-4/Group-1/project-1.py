@@ -52,31 +52,53 @@ def guessing_game():
 
 def algebra():
     print("Welcome to Algebra")
-    memorize_laws = int(input("1. Memorize laws: "))
-    take_exam = int(input("2. Exam: "))
-    
+    memorize_laws = int(input("1. Memorize Laws\n2. Take Exam\nEnter your choice: "))
+
     if memorize_laws == 1:
-        print("Memorize these laws: ...")  # Display the algebraic laws
-    elif take_exam == 2:
-        print("Exam is starting")
-        questions = ["(2a+3b)^2", "(2x+3y)^3", "(If m+1/m =a, m^3+1/m^3 =?)"]
-        answers = ["4a^2+12ab+9b^2", "8x^3+36x^2y+54xy^2+27y^3", "a^3-3a"]
-        score = 0
-        
-        for i in range(3):
-            question = questions[i]
-            print("Question:", question)
-            user_answer = input("Answer: ")
-            
-            if user_answer == answers[i]:
-                print("Your answer is correct")
-                score += 1
-            else:
-                print("Your answer is incorrect")
-        
-        print("Your score is:", score)
+        print("""
+        Memorize these laws:
+        1. (a+b)^2 = a^2 + 2ab + b^2
+        2. (a-b)^2 = a^2 - 2ab + b^2
+        3. (a^2+b^2) = (a+b)^2 - 2ab or (a-b)^2 + 2ab
+        4. (a+b)^2 = (a-b)^2 + 4ab
+        5. (a-b)^2 = (a+b)^2 - 4ab
+        6. a^2+b^2 = ((a+b)^2 + (a-b)^2)/2
+        7. (a+b+c)^2 = a^2 + b^2 + c^2 + 2ab + 2bc + 2ac
+        8. (a+b)^3 = a^3 + b^3 + 3ab(a+b)
+        9. (a-b)^3 = a^3 - b^3 - 3ab(a-b)
+        10. a^3+b^3 = (a+b)^3 - 3ab(a+b) or (a+b)(a^2 - ab + b^2)
+        11. a^3-b^3 = (a-b)^3 + 3ab(a-b) or (a-b)(a^2 + ab + b^2)
+        """)
+        take_exam_choice = input("Would you like to take the exam now? (yes/no): ").lower()
+        if take_exam_choice == "yes":
+            take_exam()
+        else:
+            print("Okay, you can take the exam later.")
+    elif memorize_laws == 2:
+        take_exam()
     else:
-        print("You pressed the wrong number")
+        print("Invalid choice")
+
+def take_exam():
+    print("Exam is starting")
+    questions = ["(2a+3b)^2", "(2x+3y)^3", "(If m+1/m =a, m^3+1/m^3 =?)"]
+    answers = ["4a^2+12ab+9b^2", "8x^3+36x^2y+54xy^2+27y^3", "a^3-3a"]
+    score = 0
+    
+    for i in range(3):
+        question = questions[i]
+        print("Question:", question)
+        user_answer = input("Answer: ")
+        
+        if user_answer == answers[i]:
+            print("Your answer is correct")
+            score += 1
+        else:
+            print("Your answer is incorrect")
+    
+    print("Your score is:", score)
+
+
 
 def temperature_indicator():
     print("Welcome to Temperature Indicator")
